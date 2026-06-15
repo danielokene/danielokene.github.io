@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Daniel Okene</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Add custom styles for the button list layout */
+			.button-list-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-top: 20px;
+			}
+	
+			.button-list-item {
+				margin-bottom: 10px;
+				margin-left: 5px; /* Add left margin to create spacing between buttons */
+			}
+			
+			/* Default font color for not selected buttons */
+			.button-list-item a {
+            color: rgb(202, 201, 201);
+            text-decoration: none;
+			font-size: 20px;
+        	}
+
+			/* Define a transition for the color property */
+			.button-list-item a {
+				transition: color 0.3s ease;
+			}
+
+			/* Change the font color to white on hover */
+			.button-list-item a:hover {
+				color: rgb(255, 255, 255);
+			}
+        
+			/* Add a new class to highlight the active button */
+        	.active {
+            	font-weight: bold;
+				color: rgb(126, 13, 13); /* Set the color for the active button */
+        	}
+
+			        /* Center the avatar and footer */
+					#header .inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+			text-align: center; /* Ensures text is aligned */
+        	}
+
+			#footer .inner {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			
+
+    </style>
+		</style>
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="#" class="image avatar">
+						<img src="images/headshot.jpeg" alt="" style="width: 100px; height: 100px;"/>
+					</a>
+					<h2> 
+						<strong> Daniel Okene </strong>
+					</h2>
+					<h3> 
+						Budding Computational Thermo-Fluid Researcher
+					</h3>
+					<h3>
+						<a href="https://biomedical.eng.unimelb.edu.au/cell-systems-mechanobiology" target="_blank" rel="noopener">
+						<span>CFD | FEA | HPC | ML</span>
+						</a>
+				        </h3>
+				        <!-- Clickable Buttons -->
+						<div class="button-list-container">
+							<div class="button-list-item"><a href="#" class="load-content-button" data-link="about.html" style="border-bottom: none;">About Me</a></div>
+							<div class="button-list-item"><a href="pdfs/CV/20250221_Volkan_Ozcoban_CV_Master_Git.pdf" target="_blank" style="border-bottom: none;">Curriculum Vitae</a></div>
+							<div class="button-list-item"><a href="#" class="load-content-button" data-link="publications.html" style="border-bottom: none;">Publications</a></div>
+							<div class="button-list-item"><a href="#" class="load-content-button" data-link="publications.html" style="border-bottom: none;">Projects</a></div>
+							<div class="button-list-item"><a href="#" class="load-content-button" data-link="other_docs.html" style="border-bottom: none;">Conferences and Posters Presentation</a></div>
+							<!-- Add more buttons with the same class and different data-link attributes for each button -->
+						</div>
+				</div>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+				<!-- One -->
+				<section id="one">
+					<!-- Initial content is left empty for dynamic loading -->
+				</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://linkedin.com/in/volkan-ozcoban-20238b167" class="icon brands fa-linkedin fa-2x"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://scholar.google.com.au/citations?hl=en&user=LJaEyt4AAAAJ&view_op=list_works" class="ai ai-google-scholar-square ai-3x" style="border-bottom: none;"></a></li>
+						<li><a href="https://orcid.org/0000-0003-3478-5670" class="icon brands fa-orcid fa-2x"><span class="label">ORCID</span></a></li>
+						<li><a href="https://github.com/VolkanOzcoban" class="icon brands fa-github fa-2x"><span class="label">Github</span></a></li>
+						<li><a href="mailto:volkanozcoban1@gmail.com" class="icon solid fa-envelope fa-2x"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script>
+ // JavaScript to handle the link clicks
+ function loadContent(linkTarget) {
+        // Fetch and load the content from the target HTML file
+        fetch(linkTarget)
+            .then(response => response.text())
+            .then(content => {
+                const mainSection = document.getElementById('one');
+                mainSection.innerHTML = content;
+            });
+    }
+
+    // Function to load the content of the first page during the initial page load
+    document.addEventListener('DOMContentLoaded', () => {
+        loadContent('about.html');
+    });
+
+    // Event listener for the clickable buttons in the navigation
+    const buttons = document.querySelectorAll('.load-content-button');
+    buttons.forEach(button => {
+        button.addEventListener('click', event => {
+            event.preventDefault();
+
+            // If the button is already active, do nothing
+            if (button.classList.contains('active')) {
+                return;
+            }
+
+            // Remove the "active" class from all navigation buttons
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add the "active" class to the clicked navigation button
+            button.classList.add('active');
+
+            // Load the content of the target link
+            const linkTarget = button.getAttribute('data-link');
+            loadContent(linkTarget);
+
+            // Update the URL using pushState to maintain navigation functionality
+            history.pushState(null, '', linkTarget);
+        });
+    });
+
+    // Handle browser back/forward buttons to maintain navigation functionality
+    window.addEventListener('popstate', () => {
+        const activeButton = document.querySelector('.load-content-button.active');
+        if (activeButton) {
+            const linkTarget = activeButton.getAttribute('data-link');
+            loadContent(linkTarget);
+        }
+    });
+			</script>
+	</body>
+</html>
