@@ -2635,7 +2635,7 @@ input, select, textarea {
 		justify-content: space-between;
 		background-color: #1f1815;
 		background-attachment: fixed;
-		background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url("../../images/bg.png");
+		background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("../../images/bg.png");
 		background-position: top left;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -3089,7 +3089,7 @@ input, select, textarea {
 
 /* Footer icon fix */
 
-	@media screen and (max-width: 1110px) {
+	@media screen and (max-width: 1130px) {
 		ul.icons li .icon {
 				font-size: 1.25em;
 			}
@@ -3145,7 +3145,7 @@ input, select, textarea {
 			#footer {
 				background-attachment: scroll;
 				background-color: #1f1815;
-				background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url("../../images/bg.png");
+				background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("../../images/bg.png");
 				background-position: top left,						bottom center;
 				background-repeat: repeat,							no-repeat;
 				background-size: auto,							cover;
