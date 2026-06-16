@@ -3024,9 +3024,10 @@ input, select, textarea {
 
 	@media screen and (min-width: 1800px) {
 
-		#header {
-				padding: 6em 3em 3em 3em;
-				width: 30%;
+		/* Basic */
+
+			body, input, select, textarea {
+				font-size: 14pt;
 			}
 	}
 
