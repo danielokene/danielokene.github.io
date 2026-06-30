@@ -2725,7 +2725,7 @@ input, select, textarea {
 
 	#main {
 		margin-left: 35%;
-		max-width: 65em;
+		max-width: 60em;
 		padding: 8em 4em 4em 4em;
 		width: calc(100% - 35%);
 	}
@@ -3304,7 +3304,7 @@ input, select, textarea {
 .project-grid{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    gap:20px;
 }
 
 .project-card{
@@ -3312,13 +3312,12 @@ input, select, textarea {
     min-width:280px;
     max-width:100%;
     background:#ffffff;
-    border-radius:18px;
+    border-radius:20px;
     overflow:hidden;
     box-shadow:0 8px 30px rgba(0,0,0,0.08);
     display:flex;
 	transition:0.3s ease;
     flex-direction:column;
-	margin-bottom: 20px;
 }
 
 .project-card img{
@@ -3357,9 +3356,9 @@ input, select, textarea {
     background:#eef4ff;
     color:#2356a8;
     padding:5px 10px;
-    border-radius:20px;
-    font-size:0.75rem;
-    font-weight:500;
+    border-radius:15px;
+    font-size:0.8rem;
+    font-weight:550;
 }
 
 .project-link{
@@ -3368,6 +3367,7 @@ input, select, textarea {
     font-weight:700;
     color:#178f8f;
     transition:.25s;
+    margin-bottom:15px;
 }
 
 .project-link:hover{
