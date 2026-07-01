@@ -3319,6 +3319,7 @@ input, select, textarea {
     display:flex;
 	transition:0.3s ease;
     flex-direction:column;
+	border: 1.5px solid;
 }
 
 .project-card img{
