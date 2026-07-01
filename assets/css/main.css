@@ -3338,6 +3338,7 @@ input, select, textarea {
     font-size:1rem;
     margin-bottom:10px;
     color:#202020;
+    font-weight:600;
 }
 
 .project-content p{
@@ -3357,9 +3358,9 @@ input, select, textarea {
     background:#eef4ff;
     color:#2356a8;
     padding:5px 10px;
-    border-radius:15px;
+    border-radius:10px;
     font-size:0.8rem;
-    font-weight:550;
+    font-weight:600;
 }
 
 .project-link{
@@ -3369,7 +3370,7 @@ input, select, textarea {
     color:#178f8f;
     transition:.25s;
 	border-bottom: none;
-    margin-bottom:15px;
+    margin-bottom:5px;
 }
 
 .project-link:hover{
