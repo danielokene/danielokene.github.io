@@ -3299,6 +3299,7 @@ input, select, textarea {
 .projects-section{
     width:100%;
     margin: auto;
+	margin-bottom: 20px;
 }
 
 .project-grid{
@@ -3367,6 +3368,7 @@ input, select, textarea {
     font-weight:700;
     color:#178f8f;
     transition:.25s;
+	border-bottom: none;
     margin-bottom:15px;
 }
 
