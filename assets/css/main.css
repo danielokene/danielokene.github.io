@@ -3388,8 +3388,8 @@ input, select, textarea {
 }
 
 .status{
-    padding:3px 6px;
-    border-radius:10px;
+    padding:4px 10px;
+    border-radius:15px;
     font-size:0.8rem;
     font-weight:600;
     white-space:nowrap;
