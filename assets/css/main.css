@@ -3377,7 +3377,6 @@ input, select, textarea {
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:15px;
     margin-bottom:15px;
 }
 
@@ -3407,7 +3406,7 @@ input, select, textarea {
 
 .status.ongoing{
     background:#fff3cd;
-    color:#8a6d00;
+    color:#da632c;
 }
 
 
