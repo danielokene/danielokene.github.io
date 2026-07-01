@@ -3335,13 +3335,6 @@ input, select, textarea {
     flex:1;
 }
 
-.project-content h3{
-    font-size:1rem;
-    margin-bottom:10px;
-    color:#202020;
-    font-weight:600;
-}
-
 .project-content p{
     color:#555;
     line-height:1.8;
@@ -3378,6 +3371,45 @@ input, select, textarea {
     color:#0f6464;
 }
 
+/* Badge style */
+
+.project-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.project-header h3{
+    font-size:1rem;
+    margin-bottom:10px;
+    color:#202020;
+    font-weight:600;
+}
+
+.status{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:0.8rem;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+/* Completed */
+
+.status.completed{
+    background:#d4edda;
+    color:#1b5e20;
+}
+
+/* Ongoing */
+
+.status.ongoing{
+    background:#fff3cd;
+    color:#8a6d00;
+}
+
 
 /* ===============================
    RESPONSIVE
@@ -3388,6 +3420,15 @@ input, select, textarea {
 .project-card{
     flex:1 1 100%;
 }
+
+}
+
+@media (max-width:600px){
+
+    .project-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
 }
 
