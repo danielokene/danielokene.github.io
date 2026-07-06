@@ -123,83 +123,85 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-			<script>
- // JavaScript to handle the link clicks
- function loadContent(linkTarget) {
-        // Fetch and load the content from the target HTML file
-        fetch(linkTarget)
-            .then(response => response.text())
-            .then(content => {
-                const mainSection = document.getElementById('one');
-                mainSection.innerHTML = content;
-            });
-    }
+		<script>
 
-    // Function to load the content of the first page during the initial page load
-    // document.addEventListener('DOMContentLoaded', () => {
-    //    loadContent('about.html');
-    //});
-		document.addEventListener("DOMContentLoaded", () => {
-    		const params = new URLSearchParams(window.location.search);
-    		const page = params.get("page");
-    		const pageToLoad = page ? page + ".html" : "about.html";
-    		loadContent(pageToLoad);
-    		document.querySelectorAll(".load-content-button").forEach(button => {
+			const pageTitles = {
+    			"about.html": "About Me",
+    			"projects.html": "Projects",
+    			"publications.html": "Publications",
+    			"presentation.html": "Presentations"
+			};
+			
+			// JavaScript to handle the link clicks
+			function loadContent(linkTarget) {
+					// Fetch and load the content from the target HTML file
+					fetch(linkTarget)
+						.then(response => response.text())
+						.then(content => {
+							const mainSection = document.getElementById('one');
+							mainSection.innerHTML = content;
+							document.title = "Daniel Okene | " + (pageTitles[linkTarget] || "Portfolio");
+							// Scroll smoothly to the top
+							window.scrollTo({
+							top: 0,
+							behavior: "smooth"
+							});
+						});
+				}
 
-        		if(button.dataset.link === pageToLoad){
-            		button.classList.add("active");
-        }
-    });
-});
+				// Function to load the content of the first page during the initial page load
+					document.addEventListener("DOMContentLoaded", () => {
+						const params = new URLSearchParams(window.location.search);
+						const page = params.get("page");
+						const pageToLoad = page ? page + ".html" : "about.html";
+						loadContent(pageToLoad);
+						document.querySelectorAll(".load-content-button").forEach(button => {
 
-    // Event listener for the clickable buttons in the navigation
-    const buttons = document.querySelectorAll('.load-content-button');
-    buttons.forEach(button => {
-        button.addEventListener('click', event => {
-            event.preventDefault();
+							if(button.dataset.link === pageToLoad){
+								button.classList.add("active");
+					}
+				});
+			});
 
-            // If the button is already active, do nothing
-            if (button.classList.contains('active')) {
-                return;
-            }
+			// Event listener for the clickable buttons in the navigation
+			const buttons = document.querySelectorAll('.load-content-button');
+			buttons.forEach(button => {
+				button.addEventListener('click', event => {
+					event.preventDefault();
 
-            // Remove the "active" class from all navigation buttons
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-            });
+					// If the button is already active, do nothing
+					if (button.classList.contains('active')) {
+						return;
+					}
 
-            // Add the "active" class to the clicked navigation button
-            button.classList.add('active');
+					// Remove the "active" class from all navigation buttons
+					buttons.forEach(btn => {
+						btn.classList.remove('active');
+					});
 
-            // Load the content of the target link
-            const linkTarget = button.getAttribute('data-link');
-            loadContent(linkTarget);
+					// Add the "active" class to the clicked navigation button
+					button.classList.add('active');
 
-            // Update the URL using pushState to maintain navigation functionality
-            // history.pushState(null, '', linkTarget);
-			history.pushState(
-    			{ page: linkTarget },
-    			"",
-    		"?page=" + linkTarget.replace(".html", "")
-			);
-        });
-    });
+					// Load the content of the target link
+					const linkTarget = button.getAttribute('data-link');
+					loadContent(linkTarget);
 
-    // Handle browser back/forward buttons to maintain navigation functionality
-    //window.addEventListener('popstate', () => {
-        //const activeButton = document.querySelector('.load-content-button.active');
-        //if (activeButton) {
-         //   const linkTarget = activeButton.getAttribute('data-link');
-          //  loadContent(linkTarget);
-       // }
-    //});
+					// Update the URL using pushState to maintain navigation functionality
+					history.pushState(
+						{ page: linkTarget },
+						"",
+					"?page=" + linkTarget.replace(".html", "")
+					);
+				});
+			});
 
-	window.addEventListener("popstate", () => {
-    	const params = new URLSearchParams(window.location.search);
-    	const page = params.get("page");
-    	const pageToLoad = page ? page + ".html" : "about.html";
-    	loadContent(pageToLoad);
-	});
-			</script>
+			// Handle browser back/forward buttons to maintain navigation functionality
+			window.addEventListener("popstate", () => {
+				const params = new URLSearchParams(window.location.search);
+				const page = params.get("page");
+				const pageToLoad = page ? page + ".html" : "about.html";
+				loadContent(pageToLoad);
+			});
+		</script>
 	</body>
 </html>
