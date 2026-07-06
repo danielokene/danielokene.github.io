@@ -136,9 +136,21 @@
     }
 
     // Function to load the content of the first page during the initial page load
-    document.addEventListener('DOMContentLoaded', () => {
-        loadContent('about.html');
+    // document.addEventListener('DOMContentLoaded', () => {
+    //    loadContent('about.html');
+    //});
+		document.addEventListener("DOMContentLoaded", () => {
+    		const params = new URLSearchParams(window.location.search);
+    		const page = params.get("page");
+    		const pageToLoad = page ? page + ".html" : "about.html";
+    		loadContent(pageToLoad);
+    		document.querySelectorAll(".load-content-button").forEach(button => {
+
+        		if(button.dataset.link === pageToLoad){
+            		button.classList.add("active");
+        }
     });
+});
 
     // Event listener for the clickable buttons in the navigation
     const buttons = document.querySelectorAll('.load-content-button');
@@ -164,18 +176,30 @@
             loadContent(linkTarget);
 
             // Update the URL using pushState to maintain navigation functionality
-            history.pushState(null, '', linkTarget);
+            // history.pushState(null, '', linkTarget);
+			history.pushState(
+    			{ page: linkTarget },
+    			"",
+    		"?page=" + linkTarget.replace(".html", "")
+			);
         });
     });
 
     // Handle browser back/forward buttons to maintain navigation functionality
-    window.addEventListener('popstate', () => {
-        const activeButton = document.querySelector('.load-content-button.active');
-        if (activeButton) {
-            const linkTarget = activeButton.getAttribute('data-link');
-            loadContent(linkTarget);
-        }
-    });
+    //window.addEventListener('popstate', () => {
+        //const activeButton = document.querySelector('.load-content-button.active');
+        //if (activeButton) {
+         //   const linkTarget = activeButton.getAttribute('data-link');
+          //  loadContent(linkTarget);
+       // }
+    //});
+
+	window.addEventListener("popstate", () => {
+    	const params = new URLSearchParams(window.location.search);
+    	const page = params.get("page");
+    	const pageToLoad = page ? page + ".html" : "about.html";
+    	loadContent(pageToLoad);
+	});
 			</script>
 	</body>
 </html>
