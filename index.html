@@ -86,15 +86,18 @@
 						<span>CFD | FEA | HPC | SciML</span>
 						</a>
 				    </h4>
-				        <!-- Clickable Buttons -->
-						<nav id="mobile-menu" class="mobile-menu">
-							<a href="#" class="load-content-button" data-link="about.html" style="border-bottom: none;">About Me</a>
-							<a href="#" class="load-content-button" data-link="projects.html" style="border-bottom: none;">Projects</a>
-							<a href="#" class="load-content-button" data-link="publications.html" style="border-bottom: none;">Publications</a>
-							<a href="#" class="load-content-button" data-link="presentation.html" style="border-bottom: none;">Presentations</a>
-							<a href="pdf/Daniel Okene Curriculum Vitae.pdf" target="_blank" style="border-bottom: none;">Download CV</a>
-							<!-- Add more buttons with the same class and different data-link attributes for each button -->
-						</nav>
+				    
+					<!-- Clickable Buttons -->
+					<nav id="mobile-menu" class="mobile-menu">
+						<button id="menu-close" class="menu-close">&times;</button>
+						<div class="mobile-nav-links">
+							<a href="#" class="load-content-button" data-link="about.html">About Me</a>
+							<a href="#" class="load-content-button" data-link="projects.html">Projects</a>
+							<a href="#" class="load-content-button" data-link="publications.html">Publications</a>
+							<a href="#" class="load-content-button" data-link="presentation.html">Presentations</a>
+							<a href="pdf/Daniel Okene Curriculum Vitae.pdf" target="_blank" class="cv-button">Download CV</a>
+						</div>
+					</nav>
 				</div>
 			</header>
 
@@ -191,6 +194,7 @@
 					const linkTarget = button.getAttribute('data-link');
 					loadContent(linkTarget);
 					mobileMenu.classList.remove("show");
+					
 
 
 					// Update the URL using pushState to maintain navigation functionality
@@ -212,10 +216,15 @@
 
 			// Handles hamburger toggling
 			const menuButton = document.getElementById("menu-toggle");
+			const menuClose = document.getElementById("menu-close");
 			const mobileMenu = document.getElementById("mobile-menu");
 
-			menuButton.addEventListener("click",()=>{
-				mobileMenu.classList.toggle("show");
+			menuButton.addEventListener("click", () => {
+				mobileMenu.classList.add("show");
+			});
+
+			menuClose.addEventListener("click", () => {
+				mobileMenu.classList.remove("show");
 			});
 		</script>
 	</body>
