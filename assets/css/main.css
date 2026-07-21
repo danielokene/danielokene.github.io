@@ -3484,7 +3484,7 @@ input, select, textarea {
     left:0;
     width:100vw;
     height:100vh;
-    background:rgba(8,18,33,0.97);
+    background:rgba(8,18,33,0.995);
     display:flex;
     justify-content:center;
     align-items:center;
@@ -3561,13 +3561,13 @@ input, select, textarea {
 
 /* Edit to Header names */
 #header h2{
-    margin:0.4rem;
+    margin-bottom:0.4rem;
 }
 
 #header h3{
-    margin:0.3rem;
+    margin-bottom:0.3rem;
 }
 
 #header h4{
-    margin:0.2rem;
+    margin-bottom:0.2rem;
 }
