@@ -12,12 +12,11 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				margin-top: 20px;
+				margin-top: 3rem;
 			}
 	
 			.button-list-item {
-				margin-bottom: 10px;
-				margin-left: 5px; /* Add left margin to create spacing between buttons */
+				margin-bottom: 0.9rem;
 			}
 			
 			/* Default font color for not selected buttons */
@@ -43,8 +42,8 @@
 				color: rgb(126, 13, 13); /* Set the color for the active button */
         	}
 
-			        /* Center the avatar and footer */
-					#header .inner {
+			/* Center the avatar and footer */
+			#header .inner {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -57,49 +56,58 @@
 				align-items: center;
 			}
 			
-
-    </style>
-		</style>
+    	</style>
 	</head>
 
 	<body class="is-preload">
+		<header id="header">
+			<!-- Hamburger (only visible on mobile) -->
+			<button id="menu-toggle" class="menu-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
 
-		<!-- Header -->
-			<header id="header">
-				<button id="menu-toggle" class="menu-toggle">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
-				<div class="inner">
-					<a href="#" class="image avatar">
-						<img src="images/headshot.jpg" alt="" style="width: 180px; height: 180px; border: 2px solid white;"/>
-					</a>
-					<h2> 
-						<strong> Daniel Okene </strong>
-					</h2>
-					<h3> 
-						Computational Thermo-Fluid Researcher
-					</h3>
-					<h4>
-						<a target="_blank" rel="noopener">
-						<span>CFD | FEA | HPC | SciML</span>
-						</a>
-				    </h4>
-				    
-					<!-- Clickable Buttons -->
-					<nav id="mobile-menu" class="mobile-menu">
-						<button id="menu-close" class="menu-close">&times;</button>
-						<div class="mobile-nav-links">
-							<a href="#" class="load-content-button" data-link="about.html">About Me</a>
-							<a href="#" class="load-content-button" data-link="projects.html">Projects</a>
-							<a href="#" class="load-content-button" data-link="publications.html">Publications</a>
-							<a href="#" class="load-content-button" data-link="presentation.html">Presentations</a>
-							<a href="pdf/Daniel Okene Curriculum Vitae.pdf" target="_blank" class="cv-button">Download CV</a>
-						</div>
-					</nav>
+			<div class="inner">
+				<!-- Avatar -->
+				<a href="#" class="image avatar">
+					<img src="images/headshot.jpg" alt="" style="width: 180px; height: 180px; border: 2px solid white;"/>
+				</a>
+				<h2><strong> Daniel Okene </strong></h2>
+				<h3>Computational Thermo-Fluid Researcher</h3>
+				<h4>CFD | FEA | HPC | SciML</h4>
+
+				<!-- Desktop Navigation -->
+				<div class="button-list-container">
+					<div class="button-list-item">
+						<a href="#" class="load-content-button" data-link="about.html">About Me</a>
+					</div>
+					<div class="button-list-item">
+						<a href="#" class="load-content-button" data-link="projects.html">Projects</a>
+					</div>
+					<div class="button-list-item">
+						<a href="#" class="load-content-button" data-link="publications.html">Publications</a>
+					</div>
+					<div class="button-list-item">
+						<a href="#" class="load-content-button" data-link="presentation.html">Presentations</a>
+					</div>
+					<div class="button-list-item">
+						<a href="pdf/Daniel Okene Curriculum Vitae.pdf" target="_blank">Curriculum Vitae</a>
+					</div>
 				</div>
-			</header>
+			</div>
+		</header>
+
+		<!-- Mobile Menu -->
+		<nav id="mobile-menu" class="mobile-menu">
+			<div class="mobile-nav-links">
+				<a href="#" class="load-content-button" data-link="about.html">About Me</a>
+				<a href="#" class="load-content-button" data-link="projects.html">Projects</a>
+				<a href="#" class="load-content-button" data-link="publications.html">Publications</a>
+				<a href="#" class="load-content-button" data-link="presentation.html">Presentations</a>
+				<a href="pdf/Daniel Okene Curriculum Vitae.pdf" target="_blank" class="cv-button">Download CV</a>
+			</div>
+		</nav>
 
 		<!-- Main -->
 			<div id="main">
@@ -194,6 +202,7 @@
 					const linkTarget = button.getAttribute('data-link');
 					loadContent(linkTarget);
 					mobileMenu.classList.remove("show");
+					menuButton.classList.remove("active");
 					
 
 
@@ -220,11 +229,8 @@
 			const mobileMenu = document.getElementById("mobile-menu");
 
 			menuButton.addEventListener("click", () => {
-				mobileMenu.classList.add("show");
-			});
-
-			menuClose.addEventListener("click", () => {
-				mobileMenu.classList.remove("show");
+				mobileMenu.classList.toggle("show");
+				menuButton.classList.toggle("active");
 			});
 		</script>
 	</body>
